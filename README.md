@@ -4,7 +4,7 @@ This repository hosts downloadable releases of **DeckReady**, a macOS app that t
 
 ## Download
 
-**[Download the latest release →](https://github.com/stephengeller/DeckReady-releases/releases/latest)**
+## **[Download the latest release →](https://github.com/stephengeller/DeckReady-releases/releases/latest)**
 
 1. Download `DeckReady-darwin-arm64.dmg` from the releases page.
 2. Open the DMG and drag **DeckReady** to your Applications folder.
