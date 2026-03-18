@@ -1,4 +1,8 @@
+<img src="docs/icon.png" width="80" alt="DeckReady icon">
+
 # DeckReady — Releases
+
+This repository hosts downloadable releases of **DeckReady**, a macOS app that turns Spotify URLs, TIDAL URLs, or text tracklists into tagged music files organized for DJ use.
 
 This repository hosts downloadable releases of **DeckReady**, a macOS app that turns Spotify URLs, TIDAL URLs, or text tracklists into tagged music files organized for DJ use.
 
