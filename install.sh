@@ -22,7 +22,7 @@ set -eu
 
 REPO="stephengeller/DeckReady-releases"
 APP_NAME="DeckReady"
-DMG_NAME="DeckReady-macOS-universal.dmg"
+DMG_NAME="DeckReady-macOS-arm64.dmg"
 APP_DEST="/Applications/${APP_NAME}.app"
 
 bold()   { printf '\033[1m%s\033[0m\n' "$*"; }
