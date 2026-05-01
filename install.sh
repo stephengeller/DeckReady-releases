@@ -75,10 +75,14 @@ curl -fL --progress-bar -o "$DMG_PATH" "$DMG_URL" || { err "Download failed from
 
 # ─── Mount + copy ─────────────────────────────────────────────────────────────
 info "Mounting DMG…"
-# hdiutil's tab-separated output: device  type  mount-point. Pick the row that
-# has a /Volumes/ mount-point (some rows have no mount-point at all).
-MOUNTED=$(hdiutil attach -nobrowse -noautoopen -quiet "$DMG_PATH" \
-          | awk -F'\t' '/\/Volumes\// { gsub(/^[[:space:]]+|[[:space:]]+$/, "", $NF); print $NF; exit }')
+# Use -plist for deterministic output: -quiet suppresses the device table too,
+# and the non-quiet form interleaves checksum lines with the table on stdout.
+# The plist format also handles mount points with spaces (e.g. "/Volumes/DeckReady 1"
+# when a stale mount from a previous run is still attached).
+MOUNTED=$(hdiutil attach -nobrowse -noautoopen -plist "$DMG_PATH" 2>/dev/null \
+          | grep -o '<string>/Volumes/[^<]*</string>' \
+          | head -n1 \
+          | sed 's|<string>||; s|</string>||')
 [ -n "$MOUNTED" ] && [ -d "$MOUNTED/${APP_NAME}.app" ] \
   || { err "Could not find ${APP_NAME}.app inside the DMG."; exit 1; }
 
